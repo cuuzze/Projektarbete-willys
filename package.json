@@ -1,0 +1,24 @@
+{
+  "name": "projektarbete-willys",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/selenium-cucumber-js/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuuzze/Projektarbete-willys.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cuuzze/Projektarbete-willys/issues"
+  },
+  "homepage": "https://github.com/cuuzze/Projektarbete-willys#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "updated-selenium-cucumber-js": "^1.8.3-rc4"
+  }
+}
