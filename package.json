@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node ./node_modules/selenium-cucumber-js/index.js"
+    "test": "node ./node_modules/updated-selenium-cucumber-js/index.js",
+    "test-1": "node ./node_modules/updated-selenium-cucumber-js/index -f features/test-id-1.feature",
+    "test-2": "node ./node_modules/updated-selenium-cucumber-js/index -f features/test-id-2.feature",
+    "test-3": "node ./node_modules/updated-selenium-cucumber-js/index -f features/test-id-3.feature",
+    "test-4": "node ./node_modules/updated-selenium-cucumber-js/index -f features/test-id-4.feature",
+    "test-5": "node ./node_modules/updated-selenium-cucumber-js/index -f features/test-id-5.feature",
+    "test-6": "node ./node_modules/updated-selenium-cucumber-js/index -f features/test-id-6.feature",
+    "test-7": "node ./node_modules/updated-selenium-cucumber-js/index -f features/test-id-7.feature",
+    "test-8": "node ./node_modules/updated-selenium-cucumber-js/index -f features/test-id-8.feature"
   },
   "repository": {
     "type": "git",
