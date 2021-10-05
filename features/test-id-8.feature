@@ -4,7 +4,10 @@ Feature: Shopping cart pre-purchase total calculation
   Before they complete payment
   
   Background:
-    Given the user is already registered to the website
+    Given that we are on Willy's website
+    And that we accepted the standard cookie policy
+    And that we have have been through the initial where to deliver popup
+    
   Scenario:
     Given the user has placed items in their shopping cart
     When the user clicks the shopping cart icon
