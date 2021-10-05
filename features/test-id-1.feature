@@ -1,9 +1,9 @@
-Feature: Willys categorizes after "Meat"
+Feature: Willys categorizes after their products after meat or vegetables
   Willys should be able to deliver all
-  products with the tag meat when pressing the buttons
+  products with the tag meat or vegetables
 
   Background:
-    Given that we are on Willy's website
+    Given that I am on "https://www.willys.se"
     And that we accepted the standard cookie policy
     And that we have have been through the initial where to deliver popup
 
