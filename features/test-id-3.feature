@@ -16,7 +16,7 @@ Feature: add product to shopping cart on Willys
     When I click on the plus button on a product           
     Then the product should be added to the shopping cart    
 
-    Scenario: Adding products to shopping cart
+  Scenario: Adding products to shopping cart
     Given that I am on "https://www.willys.se/sok?q=satsumas"  
     When I click on the plus button on a product  
     When I click on the plus button on a product          
