@@ -5,10 +5,11 @@ Feature: Delete product
   about my purchase
 
   Background:
-    Given that we are on Willy's website
+    Given that I am on "https://www.willys.se/sok?q=satsumas"
     And that we accepted the standard cookie policy
     And that we have have been through the initial where to deliver popup
-  # Lägg till från ID 3
+    When I click on the plus button on a product
+    Then the product should be added to the shopping cart
 
   Scenario: Delete product
     Given that I am on "https://www.willys.se/varukorg"
