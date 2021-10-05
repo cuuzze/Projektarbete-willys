@@ -30,7 +30,7 @@ module.exports = function () {
     for (let findResult of findResults) {
       resultTexts.push(await findResult.getText());
     }
-    expect(resultTexts).to.include('Satsumas Klass 1');
+    expect(resultTexts).to.include('Äpple Royal Gala Klass 1');
   });
 
   this.Then(/^the product should be added to the shopping cart$/, async function () {
