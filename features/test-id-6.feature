@@ -4,12 +4,18 @@ Feature: Delete product
   so I have the option to change my mind
   about my purchase
 
-  Background: Existing product
-    Given that I am on "https://www.willys.se/"
-    * that product satsuma is added to the shopping cart
+  Background:
+    Given that we are on Willy's website
+    And that we accepted the standard cookie policy
+    And that we have have been through the initial where to deliver popup
+  # Lägg till från ID 3
 
-  Scenario: Delete satsuma
+  Scenario: Delete product
     Given that I am on "https://www.willys.se/varukorg"
-    And product satsuma is added to the shopping cart
-    When I push the remove button
-    Then the procut satsuma should be removed
+    And a product is added to the shopping cart
+    When I click the remove button
+    And click the following confirmation button
+    Then the product should be removed
+    And the shopping cart should be empty
+
+# Scenario för att ta bort flera varor
