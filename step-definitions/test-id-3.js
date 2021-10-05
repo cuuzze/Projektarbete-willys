@@ -2,19 +2,6 @@ const { $, $$ } = require('../helpers/element-selection.js');
 
 module.exports = function () {
 
-  this.Given(/^that I am on "([^"]*)"$/, async function (url) {
-    await helpers.loadPage(url);
-  });
-
-  this.Given(/^that we accepted the standard cookie policy$/, async function () {
-    await driver.wait(until.elementsLocated(by.css('#onetrust-accept-btn-handler')), 10000);
-    let cookieAcceptButton = await $('#onetrust-accept-btn-handler');
-    while (!(await cookieAcceptButton.isDisplayed())) {
-      await driver.sleep(100);
-    }
-    await cookieAcceptButton.click();
-  });
-
   this.When(/^I enter "([^"]*)" in the search box$/, async function (searchPhrase) {
     let searchBox = await $('input[placeholder="Sök i e-handeln"]');
     await searchBox.sendKeys(searchPhrase);

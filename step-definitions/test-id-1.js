@@ -5,11 +5,6 @@ const { $, $$ } = require('../helpers/element-selection.js');
 
 module.exports = function () {
 
-
-  this.Given(/^that I am on "([^"]*)"$/, async function (url) {
-    await helpers.loadPage(url);
-  });
-
   /*
   
   this.When(/^I click the meny button$/, async function () {
