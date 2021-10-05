@@ -6,9 +6,11 @@ Feature: Empty shopping cart
     Given that we are on Willy's website
     And that we accepted the standard cookie policy
     And that we have have been through the initial where to deliver popup
-    
+    #mr hannes backgroundness again
+
   Scenario:
     Given the user has placed items in their shopping cart
     When the user clicks the trash bin icon
+    And clicks the confirmation button
     Then the items will be removed from the cart
     And an empty shopping cart will be shown

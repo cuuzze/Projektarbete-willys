@@ -7,9 +7,8 @@ Feature: Shopping cart pre-purchase total calculation
     Given that we are on Willy's website
     And that we accepted the standard cookie policy
     And that we have have been through the initial where to deliver popup
-    
+    #copy mr hannes nr 3 le backgroundness
   Scenario:
     Given the user has placed items in their shopping cart
     When the user clicks the shopping cart icon
-    And before payment
     Then the correct total for the items in the shopping cart should be displayed  
