@@ -1,6 +1,6 @@
 const { $, $$ } = require('../helpers/element-selection.js');
 
-let slowDown1 = true;
+let slowDown1 = false;
 async function waitAWhile() {
   await driver.sleep(slowDown1 ? 5000 : 0);
 }
@@ -22,6 +22,15 @@ module.exports = function () {
 
     await clickbutton.click();
     await waitAWhile();
+
+    let h2Text;
+
+    while (h2Text !== 'Kött, chark & fågel') {
+
+      h2Text = await (await driver.findElement(By.css('h2'))).getText();
+
+      await driver.sleep(100);
+    }
   });
 
   this.When(/^I click on the Meat subcategory$/, async function () {
@@ -30,9 +39,22 @@ module.exports = function () {
     let clickbutton2 = meatButton2[1]
     await clickbutton2.click();
     await waitAWhile();
+
+    let h2Text;
+
+    while (h2Text !== 'Kött') {
+
+      h2Text = await (await driver.findElement(By.css('h2'))).getText();
+
+      await driver.sleep(100);
+    }
+
+
   });
 
   this.Then(/^I should see all the products with the meat tag$/, async function () {
+
+
     let findResults = await $$('.Headingstyles__StyledH2-sc-r7tfy8-1');
     let resultTexts = [];
     for (let findResult of findResults) {
@@ -40,6 +62,9 @@ module.exports = function () {
     }
     expect(resultTexts).to.include('Kött');
     await waitAWhile();
+
+
+
   })
 
 
@@ -51,7 +76,7 @@ module.exports = function () {
       resultTexts.push(await findResult.getText());
     }
     expect(resultTexts).to.include('Nötfärs 12% Sverige');
-  })
+  });
 
 
   // This is where we go to check for vegetables instead :)
@@ -61,6 +86,17 @@ module.exports = function () {
     let clickbutton = vegetableButton[1];
     await clickbutton.click();
     await waitAWhile();
+
+    let h2Text;
+
+    while (h2Text !== 'Frukt & Grönt') {
+
+      h2Text = await (await driver.findElement(By.css('h2'))).getText();
+
+      await driver.sleep(100);
+    }
+
+
   });
 
 
@@ -70,6 +106,14 @@ module.exports = function () {
     let clickbutton2 = vegetableButton2[2]
     await clickbutton2.click();
     await waitAWhile();
+
+    let h2Text;
+    while (h2Text !== 'Grönsaker') {
+
+      h2Text = await (await driver.findElement(By.css('h2'))).getText();
+
+      await driver.sleep(100);
+    }
   });
 
   this.Then(/^I should see all the products with the vegetable tag$/, async function () {
@@ -80,6 +124,7 @@ module.exports = function () {
     }
     expect(resultTexts).to.include('Grönsaker');
     await waitAWhile();
+
   });
 
 
