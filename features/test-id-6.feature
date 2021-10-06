@@ -5,10 +5,11 @@ Feature: Delete product
   about my purchase
 
   Background:
-    Given that I am on "https://www.willys.se/sok?q=satsumas"
+    Given that I am on "https://www.willys.se"
     And that we accepted the standard cookie policy
     And that we have have been through the initial where to deliver popup
-    When I click on the plus button on a product
+    When I am on "https://www.willys.se/sok?q=djungelvr%C3%A5l"
+    And I click on the plus button on a product
     Then the product should be added to the shopping cart
 
   Scenario: Delete product
