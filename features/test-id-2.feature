@@ -3,17 +3,24 @@ Feature: Finding more info about a product
   product so that I can find out more information about it
 
   Background:
-    Given that we are on Willy's website
+    Given that I am on "https://www.willys.se"
     And that we accepted the standard cookie policy
 
   Scenario: Searching for and clicking on an item
-    Given that I enter "satsumas" in the search box
-    When I press ENTER
-    And I get the search result
-    Then I should be able to click on a product to find out more about it
+    Given that I search for "melon" in the search box
+    And I click ENTER key
+    And I get the list of products
+    And I have a list of products in the search result
+    #And that the list contains melon galia
+    When I click on a melon galia
+    Then I should be able to find out more information about given product
 
-  Scenario: Searching for and clicking on an item
-    Given that I enter "apelsin" in the search box
-    When I press ENTER
-    And I get the search result
-    Then I should be able to click on a product to find out more about it
+  Scenario: Searchin for a non existing product
+    Given that I enter "abcdefgh" in the search bar
+    When I press Enter
+    Then I should get a message that says that the searched product does not exist
+
+
+
+
+
