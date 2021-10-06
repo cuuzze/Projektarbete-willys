@@ -39,7 +39,6 @@ module.exports = function () {
       resultTexts.push(await findResult.getText());
     }
     expect(resultTexts).to.include('Kött');
-
     await waitAWhile();
   })
 
@@ -54,13 +53,14 @@ module.exports = function () {
     expect(resultTexts).to.include('Nötfärs 12% Sverige');
   })
 
+
+  // This is where we go to check for vegetables instead :)
+
   this.When(/^I click on the Vegetables and Greens category$/, async function () {
     let vegetableButton = await $$('.axsidemenu-toggle');
     let clickbutton = vegetableButton[1];
-
     await clickbutton.click();
     await waitAWhile();
-
   });
 
 
@@ -79,7 +79,6 @@ module.exports = function () {
       resultTexts.push(await findResult.getText());
     }
     expect(resultTexts).to.include('Grönsaker');
-
     await waitAWhile();
   });
 
@@ -92,9 +91,7 @@ module.exports = function () {
       resultTexts.push(await findResult.getText());
     }
     expect(resultTexts).to.include('Avokado Klass 1');
-
   })
-
 };
 
 
