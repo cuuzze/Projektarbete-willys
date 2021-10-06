@@ -22,13 +22,15 @@ module.exports = function () {
   });
 
   this.When(/^I click the shopping cart button$/, async function () {
+    // this helpers.loadPage is for my (Filip) benefit, because the test runs faster than the product is able
+    // to load into the shopping cart (maybe there's a better solution)
     await helpers.loadPage('https://www.willys.se/sok?q=delicatoboll+1-pack');
     let clickButton = await $('.fyXSDX');
     await clickButton.click();
   });
 
   this.Then(/^I should be able to click the buy button$/, async function () {
-    let clickButton = await $('.cCYiYM');
+    let clickButton = await $('a[href="https://www.willys.se/varukorg"]');
     await clickButton.click();
   });
 
