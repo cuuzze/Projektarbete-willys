@@ -1,5 +1,11 @@
 const { $, $$ } = require('../helpers/element-selection.js');
 
+let slowDown = false;
+
+async function waitAWhile() {
+  await driver.sleep(slowDown ? 5000 : 0);
+}
+
 module.exports = function () {
 
   this.When(/^I enter "([^"]*)" in the search box$/, async function (searchPhrase) {
@@ -13,47 +19,50 @@ module.exports = function () {
   });
 
   this.When(/^I click on the plus button on a product$/, async function () {
-    let clickButton = await $$('.CardQuantityInputField_quantity-button__3ohGY');
+    let clickButton = await $$('[class^= "CardQuantityInputField_quantity-button"]');
     let confirmButton = clickButton[1];
     await confirmButton.click();
   });
 
   this.Then(/^I should get a search result$/, async function () {
     await driver.wait(until.elementsLocated(by.css('.Grid_grid__1YmC6')), 20000);
-    let findList = await $('.Grid_grid__1YmC6');
+    let findList = await $('[class^= "Grid_grid"]');
     expect(findList).to.not.equal(null);
   });
 
   this.Then(/^the search result should contain the correct product$/, async function () {
-    let findResults = await $$('.Product_product-name__1IyPc');
+    let findResults = await $$('[class^= "Product_product-name"]');
     let resultTexts = [];
     for (let findResult of findResults) {
       resultTexts.push(await findResult.getText());
     }
-    expect(resultTexts).to.include('Äpple Royal Gala Klass 1');
+    expect(resultTexts).to.include('Ciabatta');
+  });
+
+  this.When(/^I click the shopping cart-button$/, async function () {
+    await driver.sleep(1000);
+    let clickButton = await $('[class^= "Buttonstyles__StyledButton"]');
+    await clickButton.click();
   });
 
   this.Then(/^the product should be added to the shopping cart$/, async function () {
-    let findResults = await $$('.MiniCartstyles__StyledCounter-sc-1wu749y-6 cQZUCU');
+    let findResults = await $$('.ax-cart-mini .ax-badge.ax-badge-info');
     let resultTexts = [];
     for (let findResult of findResults) {
       resultTexts.push(await findResult.getText());
     }
-    expect(resultTexts).to.not.equal(0);
+    expect(resultTexts).to.eql(['1']);
   });
 
   this.Then(/^the products should be added to the shopping cart$/, async function () {
-    let findResults = await $$('.MiniCartstyles__StyledCounter-sc-1wu749y-6 cQZUCU');
+    let findResults = await $$('.ax-cart-mini .ax-badge.ax-badge-info');
     let resultTexts = [];
     for (let findResult of findResults) {
       resultTexts.push(await findResult.getText());
     }
-    expect(resultTexts).to.not.equal(0);
+    expect(resultTexts).to.eql(['2']);
   });
 };
-
-
-
 
 
 
