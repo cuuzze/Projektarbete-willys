@@ -19,43 +19,35 @@ module.exports = function () {
   this.When(/^I click on the meat, poultry and butchers' category$/, async function () {
     let meatButton = await $$('.axsidemenu-toggle');
     let clickbutton = meatButton[0];
-
     await clickbutton.click();
+
     await waitAWhile();
 
     let h2Text;
-
     while (h2Text !== 'Kött, chark & fågel') {
-
       h2Text = await (await driver.findElement(By.css('h2'))).getText();
-
       await driver.sleep(100);
     }
   });
 
   this.When(/^I click on the Meat subcategory$/, async function () {
 
-    let meatButton2 = await $$('.bNkgyk');
-    let clickbutton2 = meatButton2[1]
-    await clickbutton2.click();
+    let meatButton2 = await $('a[href="/sortiment/kott-chark-och-fagel/kott"]');
+
+    await meatButton2.click();
     await waitAWhile();
 
     let h2Text;
-
     while (h2Text !== 'Kött') {
-
       h2Text = await (await driver.findElement(By.css('h2'))).getText();
-
       await driver.sleep(100);
     }
-
 
   });
 
   this.Then(/^I should see all the products with the meat tag$/, async function () {
 
-
-    let findResults = await $$('.Headingstyles__StyledH2-sc-r7tfy8-1');
+    let findResults = await $$('[class^= "Headingstyles__StyledH2"]');
     let resultTexts = [];
     for (let findResult of findResults) {
       resultTexts.push(await findResult.getText());
@@ -63,21 +55,20 @@ module.exports = function () {
     expect(resultTexts).to.include('Kött');
     await waitAWhile();
 
-
-
   })
 
 
   this.Then(/^be able to find ground beef in the list$/, async function () {
 
-    let findResults = await $$('.Product_product-name__1IyPc');
+    let findResults = await $$('[class^= "Product_product-name"]');
     let resultTexts = [];
     for (let findResult of findResults) {
       resultTexts.push(await findResult.getText());
     }
+
+    //you can check for any product name on the page for testing!
     expect(resultTexts).to.include('Nötfärs 12% Sverige');
   });
-
 
   // This is where we go to check for vegetables instead :)
 
@@ -88,36 +79,28 @@ module.exports = function () {
     await waitAWhile();
 
     let h2Text;
-
     while (h2Text !== 'Frukt & Grönt') {
-
       h2Text = await (await driver.findElement(By.css('h2'))).getText();
-
       await driver.sleep(100);
     }
-
-
   });
-
 
   this.When(/^I click on the Vegetables subcategory$/, async function () {
 
-    let vegetableButton2 = await $$('.eusBJK');
-    let clickbutton2 = vegetableButton2[2]
-    await clickbutton2.click();
+    let vegetableButton2 = await $('a[href="/sortiment/frukt-och-gront/gronsaker"]');
+    await vegetableButton2.click();
     await waitAWhile();
 
     let h2Text;
     while (h2Text !== 'Grönsaker') {
-
       h2Text = await (await driver.findElement(By.css('h2'))).getText();
-
       await driver.sleep(100);
     }
   });
 
   this.Then(/^I should see all the products with the vegetable tag$/, async function () {
-    let findResults = await $$('.Headingstyles__StyledH2-sc-r7tfy8-1');
+    let findResults = await $$('[class^= "Headingstyles__StyledH2"]');
+
     let resultTexts = [];
     for (let findResult of findResults) {
       resultTexts.push(await findResult.getText());
@@ -130,7 +113,7 @@ module.exports = function () {
 
   this.Then(/^be able to find avocados in the list$/, async function () {
 
-    let findResults = await $$('.Product_product-name__1IyPc');
+    let findResults = await $$('[class^= "Product_product-name"]');
     let resultTexts = [];
     for (let findResult of findResults) {
       resultTexts.push(await findResult.getText());
