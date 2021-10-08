@@ -5,27 +5,17 @@ Feature: add product to shopping cart on Willys
   Background: 
     Given that I am on "https://www.willys.se"
     And that we accepted the standard cookie policy
-    And that we have have been through the initial where to deliver popup
-    When I enter "ciabatta" in the search box
-    And press the enter key
-    Then I should get a search result
-    And the search result should contain the correct product
+    And that we have have been through the initial where to deliver popup    
 
   Scenario: Adding product to shopping cart
-    Given that I am on "https://www.willys.se/sok?q=ciabatta"  
-    When I click on the plus button on a product    
-    And I click the shopping cart-button      
-    Then I should be able to click the buy button
-    And arrive at "https://www.willys.se/varukorg" 
-    And the product should be added to the shopping cart    
+    Given that I am on "https://www.willys.se"  
+    When I click on the plus button on a product      
+    Then the product count should be increased  
 
   Scenario: Adding products to shopping cart
-    Given that I am on "https://www.willys.se/sok?q=ciabatta"  
+    Given that I am on "https://www.willys.se"  
     When I click on the plus button on a product  
-    And I click on the plus button on a product 
-    And I click the shopping cart-button      
-    Then I should be able to click the buy button
-    And arrive at "https://www.willys.se/varukorg"         
-    And the products should be added to the shopping cart        
+    And I click on the plus button on a product     
+    Then the products count should be increased       
 
   
