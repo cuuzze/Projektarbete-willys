@@ -81,6 +81,15 @@ module.exports = function () {
     }
     expect(resultTexts).to.eql(['2']);
   });
+
+  this.Then(/^there should be a text displaying that my cart is empty$/, async function () {
+    let findResults = await $$('.selenium--miniCart-empty-text');
+    let resultTexts = [];
+    for (let findResult of findResults) {
+      resultTexts.push(await findResult.getText());
+    }
+    expect(resultTexts).to.include('Din varukorg är tom!');
+  });
 };
 
 

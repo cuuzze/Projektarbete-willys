@@ -18,4 +18,8 @@ Feature: add product to shopping cart on Willys
     And I click on the plus button on a product     
     Then the products count should be increased       
 
+  Scenario: Going to the shopping cart without any products
+    Given the shopping cart menu is open
+    Then there should be a text displaying that my cart is empty    
+
   

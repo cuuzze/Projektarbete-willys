@@ -9,18 +9,18 @@ async function waitAWhile() {
 
 module.exports = function () {
 
-  this.Given(/^there is a product in the shopping cart$/, async function () {
-    let findResults = await $$('.ax-cart-mini .ax-badge.ax-badge-info');
+  this.Given(/^there is products in the shopping cart$/, async function () {
+    let findResults = await $$('#selenium--cart-badge-total-unit-count');
     let resultTexts = [];
     for (let findResult of findResults) {
       resultTexts.push(await findResult.getText());
     }
-    expect(resultTexts).to.not.eql(['0']);
+    expect(resultTexts).to.eql(['2']);
   });
 
   this.Given(/^the shopping cart menu is open$/, async function () {
     await driver.sleep(1000);
-    let clickButton = await $('[class^= "Buttonstyles__StyledButton"]');
+    let clickButton = await $('[class^= "ax-btn ax-btn-fab ax-toolbar-btn"]');
     await clickButton.click();
   });
 
@@ -40,7 +40,7 @@ module.exports = function () {
   });
 
   this.When(/^I click the buy-button$/, async function () {
-    let clickButton = await $('a[href="https://www.willys.se/varukorg"]');
+    let clickButton = await $('a[class^= "ax-btn ax-btn-primary"]');
     await clickButton.click();
   });
 
