@@ -52,7 +52,7 @@ module.exports = function () {
     await waitAWhile();
   });
 
-  this.Then(/^I should be able to find out more information about given product$/, async function () {
+  this.Then(/^by clicking on Övrigt, I should be able to find out more information about given product$/, async function () {
     let productInformation = await $$('.Tabs_bottom__2tvqg');
     let productInfo = productInformation[1];
     await productInfo.click();

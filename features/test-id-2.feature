@@ -11,9 +11,9 @@ Feature: Finding more info about a product
     And I click ENTER key
     And I get the list of products
     And I have a list of products in the search result
-    #And that the list contains melon galia
+    And that the list contains melon galia
     When I click on a melon galia
-    Then I should be able to find out more information about given product
+    Then by clicking on Övrigt, I should be able to find out more information about given product
 
   Scenario: Searchin for a non existing product
     Given that I enter "abcdefgh" in the search bar
