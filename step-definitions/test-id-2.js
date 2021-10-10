@@ -60,26 +60,38 @@ module.exports = function () {
 
   });
 
+  this.Given(/^that I enter "([^"]*)" in the search bar$/, async function (searchPhrase) {
+    let searchBox = await $('input[placeholder="Sök i e-handeln"]');
+    await searchBox.sendKeys(searchPhrase);
 
+  });
 
+  this.When(/^I press Enter key$/, async function () {
+    let searchBox = await $('input[placeholder="Sök i e-handeln"]');
+    await searchBox.sendKeys(selenium.Key.ENTER);
+    await waitAWhile();
 
+  });
 
+  this.Then(/^the list of products sould be empty$/, async function () {
 
+    let productList = await $$('.Containerstyles__StyledContainer-sc-lx7e76-0 kOhKBa');
 
+    expect(productList).to.equal[0];
+    await waitAWhile();
+  });
 
+  this.Then(/^I should get a message that says that the searched product does not exist$/, async function () {
 
+    let errorMessages = await $$('[class^="Text_text__1DvUt Text_body__FrvAc Text_black__yB42g"]');
+    let searchResult = [];
 
-  /*let resultText = [];
-    for (let findProductInformation of findProductInformations) {
-      resultText.push(await findProductInformation.getText());
+    for (let errorMessage of errorMessages) {
+      searchResult.push(await errorMessage.getText());
     }
-    expect(resultText).to.include('Produktinformation');
-    expect(resultText).to.include('Övrigt');*/
-  //let productInformationButton = productInformation[1];
+    expect(searchResult).to.include('Din sökning gav tyvärr ingen träff.');
 
-  //await productInformationButton.click();
-
-  //await waitAWhile();
-
+    await waitAWhile();
+  });
 
 };

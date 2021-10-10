@@ -17,8 +17,9 @@ Feature: Finding more info about a product
 
   Scenario: Searchin for a non existing product
     Given that I enter "abcdefgh" in the search bar
-    When I press Enter
-    Then I should get a message that says that the searched product does not exist
+    When I press Enter key
+    Then the list of products sould be empty
+    And I should get a message that says that the searched product does not exist
 
 
 
