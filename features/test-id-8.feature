@@ -1,12 +1,12 @@
 Feature: Shopping cart pre-purchase total calculation
-  In order to evaluate if a purchase is within a user's budget
+  To evaluate if a purchase is within a user's budget
   Users should be able to view the shopping cart total
   Before they complete payment
   
   Background:
     Given that I am on "https://www.willys.se"
-    And that I have accepted the standard cookie policy
-    And that I have have been through the initial where to deliver popup
+    And that we accepted the standard cookie policy
+    And that we have have been through the initial where to deliver popup
 
   Scenario:
     Given that I have placed items in my shopping cart

@@ -1,11 +1,11 @@
 Feature: Empty shopping cart
-  In order to reset an ongoing shopping session
+  To reset an ongoing shopping session
   Users should be able to empty the shopping cart
 
   Background:
     Given that I am on "https://www.willys.se"
-    And that I have accepted the standard cookie policy
-    And that I have have been through the initial where to deliver popup
+    And that we accepted the standard cookie policy
+    And that we have have been through the initial where to deliver popup
 
   Scenario:
     Given that I have placed items in my shopping cart
