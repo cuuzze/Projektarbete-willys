@@ -9,8 +9,7 @@ Feature: Delete product
     And that we accepted the standard cookie policy
     And that we have have been through the initial where to deliver popup
     When I am on "https://www.willys.se/sok?q=djungelvr%C3%A5l"
-    And I click on the plus button on a product
-    Then the product should be added to the shopping cart
+    And I click on the plus button on the product
 
   Scenario: Delete product
     Given that I am on "https://www.willys.se/varukorg"
