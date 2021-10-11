@@ -34,9 +34,8 @@ module.exports = function () {
   this.Then(/^the product should be removed$/, async function () {
 
     let checkCartItems = await $$('.md-list-item-text');
-    let itemResult = checkCartItems[0];
 
-    expect(itemResult).to.equal[0];
+    expect(checkCartItems).to.equal[0];
   });
 
   this.Then(/^the shopping cart should be empty$/, async function () {
