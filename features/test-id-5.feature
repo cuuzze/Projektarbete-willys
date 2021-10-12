@@ -6,8 +6,7 @@ Feature: change count on a product in the shopping cart on Willys"
     Given that I am on "https://www.willys.se" 
     And that we accepted the standard cookie policy
     And that we have have been through the initial where to deliver popup  
-    When I click on the plus button on a product 
-    And I click on the plus button on a product     
+    When I click on the plus button twice on a product         
     Then the products count should be increased               
 
   Scenario: Increasing product count in shopping cart    

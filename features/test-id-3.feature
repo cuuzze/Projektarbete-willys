@@ -14,8 +14,7 @@ Feature: add product to shopping cart on Willys
 
   Scenario: Adding products to shopping cart
     Given that I am on "https://www.willys.se"  
-    When I click on the plus button on a product  
-    And I click on the plus button on a product     
+    When I click on the plus button twice on a product         
     Then the products count should be increased       
 
   Scenario: Going to the shopping cart without any products
