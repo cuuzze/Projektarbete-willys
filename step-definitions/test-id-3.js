@@ -25,19 +25,27 @@ module.exports = function () {
     await waitAWhile();
   });
 
-  this.Then(/^I should get a search result$/, async function () {
+  this.When(/^I click on the plus button twice on a product$/, async function () {
+    await driver.sleep(1000);
+    let clickButton = await $('[class^= "ax-btn ax-product-quantity-btn ax-product-quantity-plus"]');
+    await clickButton.click();
+    await clickButton.click();
+    await waitAWhile();
+  });
+
+  this.When(/^I should get a search result$/, async function () {
     await driver.wait(until.elementsLocated(by.css('[class^= "Grid_grid"]')), 20000);
     let findList = await $('[class^= "Grid_grid"]');
     expect(findList).to.not.equal(null);
   });
 
-  this.Then(/^the search result should contain the correct product$/, async function () {
+  this.When(/^the search result should contain the correct product$/, async function () {
     let findResults = await $$('[class^= "Product_product-name"]');
     let resultTexts = [];
     for (let findResult of findResults) {
       resultTexts.push(await findResult.getText());
     }
-    expect(resultTexts).to.include('Ciabatta');
+    expect(resultTexts).to.include('Delicatoboll 1-pack');
   });
 
   this.When(/^I click the shopping cart-button$/, async function () {
