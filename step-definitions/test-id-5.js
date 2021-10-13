@@ -19,7 +19,6 @@ module.exports = function () {
   });
 
   this.Given(/^the shopping cart menu is open$/, async function () {
-    await driver.sleep(1000);
     let clickButton = await $('[class^= "ax-btn ax-btn-fab ax-toolbar-btn"]');
     await clickButton.click();
   });
@@ -57,14 +56,12 @@ module.exports = function () {
     let clickButton = await $$('[class^= "ax-btn ax-product-quantity-btn"]');
     let confirmButton = clickButton[1];
     await confirmButton.click();
-    await driver.sleep(1000);
   });
 
   this.Then(/^I click on the minus button on the product in the shopping cart$/, async function () {
     let clickButton = await $$('[class^= "ax-btn ax-product-quantity-btn"]');
     let confirmButton = clickButton[0];
     await confirmButton.click();
-    await driver.sleep(1000);
   });
 
   this.Then(/^I click on the plus-button on a product$/, async function () {
@@ -74,6 +71,12 @@ module.exports = function () {
   });
 
   this.Then(/^the product count should be increased in the shopping cart$/, async function () {
+    let h2Text;
+    while (h2Text !== '3') {
+      h2Text = await (await driver.findElement(By.css('.ax-cart-mini .ax-badge.ax-badge-info'))).getText();
+      await driver.sleep(100);
+    }
+
     let findResults = await $$('.ax-cart-mini .ax-badge.ax-badge-info');
     let resultTexts = [];
     for (let findResult of findResults) {
@@ -83,6 +86,12 @@ module.exports = function () {
   });
 
   this.Then(/^the product count should be decreased in the shopping cart$/, async function () {
+    let h2Text;
+    while (h2Text !== '1') {
+      h2Text = await (await driver.findElement(By.css('.ax-cart-mini .ax-badge.ax-badge-info'))).getText();
+      await driver.sleep(100);
+    }
+
     let findResults = await $$('.ax-cart-mini .ax-badge.ax-badge-info');
     let resultTexts = [];
     for (let findResult of findResults) {

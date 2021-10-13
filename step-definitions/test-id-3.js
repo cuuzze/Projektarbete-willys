@@ -19,14 +19,14 @@ module.exports = function () {
   });
 
   this.When(/^I click on the plus button on a product$/, async function () {
-    await driver.sleep(1000);
+
     let clickButton = await $('[class^= "ax-btn ax-product-quantity-btn ax-product-quantity-plus"]');
     await clickButton.click();
     await waitAWhile();
   });
 
   this.When(/^I click on the plus button twice on a product$/, async function () {
-    await driver.sleep(1000);
+
     let clickButton = await $('[class^= "ax-btn ax-product-quantity-btn ax-product-quantity-plus"]');
     await clickButton.click();
     await clickButton.click();
@@ -48,12 +48,6 @@ module.exports = function () {
     expect(resultTexts).to.include('Delicatoboll 1-pack');
   });
 
-  this.When(/^I click the shopping cart-button$/, async function () {
-    await driver.sleep(1000);
-    let clickButton = await $('[class^= "Buttonstyles__StyledButton"]');
-    await clickButton.click();
-  });
-
   this.Then(/^the product count should be increased$/, async function () {
     let findResults = await $$('#selenium--cart-badge-total-unit-count');
     let resultTexts = [];
@@ -61,6 +55,12 @@ module.exports = function () {
       resultTexts.push(await findResult.getText());
     }
     expect(resultTexts).to.eql(['1']);
+
+    let h2Text;
+    while (h2Text !== '1') {
+      h2Text = await (await driver.findElement(By.css('#selenium--cart-badge-total-unit-count'))).getText();
+      await driver.sleep(100);
+    }
   });
 
   this.Then(/^the products count should be increased$/, async function () {
@@ -70,6 +70,13 @@ module.exports = function () {
       resultTexts.push(await findResult.getText());
     }
     expect(resultTexts).to.eql(['2']);
+
+    let h2Text;
+    while (h2Text !== '2') {
+      h2Text = await (await driver.findElement(By.css('#selenium--cart-badge-total-unit-count'))).getText();
+      await driver.sleep(100);
+    }
+
   });
 
   this.Then(/^the product should be added to the shopping cart$/, async function () {
