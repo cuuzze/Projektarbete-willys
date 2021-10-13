@@ -9,7 +9,7 @@ Feature: Empty shopping cart
 
   Scenario:
     Given that I have placed items in my shopping cart
-    When I click the "Töm"-button
+    And the shopping cart side menu is open
+    When I click the empty button
     And click the confirmation button
-    Then the items will be removed from the cart
     And an empty shopping cart will be shown

@@ -15,12 +15,15 @@ module.exports = function () {
     await waitAWhile();
   });
 
-  this.When(/^I click the trash bin icon$/, async function () {
-    let clickShoppingCart = await $('[class^= "ax-icon-lg ax-icon cart-icon"]');
+  this.When(/^the shopping cart side menu is open$/, async function () {
+    let clickShoppingCart = await $('[class^= "ax-btn ax-btn-fab ax-toolbar-btn"]');
     await clickShoppingCart.click();
 
-    await driver.sleep(1000);
+    await waitAWhile();
+  });
 
+  this.When(/^I click the empty button$/, async function () {
+    
     let clickButton = await $('[arialabel="cart.page.clear.all"]');
     await clickButton.click();
     await waitAWhile();
@@ -35,7 +38,7 @@ module.exports = function () {
 
   this.Then(/^an empty shopping cart will be shown$/, async function () {
 
-    let checkEmptyCart = await $('h1').getText();
+    let checkEmptyCart = await $('h3').getText();
 
     expect(checkEmptyCart).to.include('Din varukorg är tom!');
     await waitAWhile();
