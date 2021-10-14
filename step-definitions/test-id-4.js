@@ -28,11 +28,11 @@ module.exports = function () {
   });
 
   this.Given(/^that I click the shopping cart button$/, async function () {
-    // this helpers.loadPage is for my (Filip) benefit, because the test runs faster than the product is able
-    // to load into the shopping cart (maybe there's a better solution)
-    // await helpers.loadPage('https://www.willys.se/sok?q=delicatoboll+1-pack');
-    let clickButton = await $('.fyXSDX');
+
+    // be aware, loading shenanigans might ruin this part
+    let clickButton = await $('[class^= "MiniCartstyles__StyledMiniCart"]');
     await clickButton.click();
+
   });
 
   this.When(/^I click the buy button$/, async function () {
@@ -44,20 +44,6 @@ module.exports = function () {
     await helpers.loadPage(url);
     await waitAWhile();
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
