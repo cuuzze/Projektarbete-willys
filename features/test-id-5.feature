@@ -12,16 +12,26 @@ Feature: change count on a product in the shopping cart on Willys
   Scenario: Increasing product count in shopping cart
     Given the shopping cart menu is open
     When I click the buy-button
-    And arrive at "https://www.willys.se/varukorg"
+    And I should arrive at "https://www.willys.se/varukorg"
     Then I click on the plus button on the product in the shopping cart
     And the product count should be increased in the shopping cart
 
   Scenario: Decreasing product count in shopping cart
     Given the shopping cart menu is open
     When I click the buy-button
-    And arrive at "https://www.willys.se/varukorg"
+    And I should arrive at "https://www.willys.se/varukorg"
     Then I click on the minus button on the product in the shopping cart
     And the product count should be decreased in the shopping cart
+
+  Scenario: Increasing product count in sidemenu
+    Given the shopping cart menu is open
+    When I click on the plus button on the product in the side menu
+    Then the product count should be increased in the side menu
+
+  Scenario: Decreasing product count in sidemenu
+    Given the shopping cart menu is open
+    When I click on the minus button on the product in the side menu
+    Then the product count should be decreased in the side menu
 
 
 

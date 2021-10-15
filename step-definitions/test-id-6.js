@@ -47,26 +47,4 @@ module.exports = function () {
   });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
