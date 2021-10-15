@@ -18,14 +18,25 @@ module.exports = function () {
   this.Then(/^the correct total for the items in the shopping cart should be displayed$/, async function () {
 
     //let miniCartTotal
-    let totalPerItemTypes = +(await await $$('[class^= "col-total-price text-accent"]')).getText().split(' ')[0].split(',').join(['.']);
-    let miniCartTotal = await $$('[.selenium--miniCart-total-amount]').getText().split(' ')[0].split(',').join(['.']);
 
-    expect(totalPerItemTypes).to.equal(miniCartTotal);
+    let totalPerItemTypes = +(await (await driver.findElement(By.css('.text-accent'))).getText()).split(' ')[0].split(',').join('.');
+    let miniCartTotal = +(await (await driver.findElement(By.css('#selenium--miniCart-total-amount'))).getText()).split(' ')[0].split(',').join('.');
+
+
+
+    expect(miniCartTotal).to.eql(totalPerItemTypes);
+
+
+
+
+
+
+
+
 
   });
 
 
 
-  
+
 }
