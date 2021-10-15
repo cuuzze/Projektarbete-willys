@@ -6,9 +6,9 @@ Feature: Empty shopping cart
     Given that I am on "https://www.willys.se"
     And that we accepted the standard cookie policy
     And that we have have been through the initial where to deliver popup
+    And that I have placed items in my shopping cart
 
   Scenario:
-    Given that I have placed items in my shopping cart
     And the shopping cart side menu is open
     When I click the empty button
     And click the confirmation button

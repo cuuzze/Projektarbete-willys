@@ -45,4 +45,12 @@ module.exports = function () {
     await waitAWhile();
   });
 
+  this.Given(/^that I have placed items in my shopping cart$/, async function () {
+    //maybe make sexy loop..
+    await driver.sleep(1000);
+    let plusButton = await driver.findElement(By.css('.ax-product-quantity-plus'));
+    await plusButton.click();
+    await waitAWhile();
+  });
+
 };

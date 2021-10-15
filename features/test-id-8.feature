@@ -7,8 +7,8 @@ Feature: Shopping cart pre-purchase total calculation
     Given that I am on "https://www.willys.se"
     And that we accepted the standard cookie policy
     And that we have have been through the initial where to deliver popup
+    And that I have placed items in my shopping cart
 
   Scenario:
-    Given that I have placed items in my shopping cart
     When I click the shopping cart icon
     Then the correct total for the items in the shopping cart should be displayed  
