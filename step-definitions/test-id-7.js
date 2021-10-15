@@ -7,14 +7,7 @@ async function waitAWhile() {
 }
 module.exports = function () {
 
-  this.When(/^that I have placed items in my shopping cart$/, async function () {
-
-    await driver.sleep(1000);
-    let plusButton = await $('[class^= "ax-btn ax-product-quantity-btn ax-product-quantity-plus"]');
-    await plusButton.click();
-    await waitAWhile();
-  });
-
+ 
   this.When(/^the shopping cart side menu is open$/, async function () {
     let clickShoppingCart = await $('[class^= "ax-btn ax-btn-fab ax-toolbar-btn"]');
     await clickShoppingCart.click();
