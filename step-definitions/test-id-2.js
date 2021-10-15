@@ -20,15 +20,16 @@ module.exports = function () {
   });
 
   this.Given(/^I get the list of products$/, async function () {
-    await driver.wait(until.elementsLocated(by.css('.Grid_grid__1YmC6')), 20000);
-    let findList = await $$('.Grid_grid__1YmC6');
+    await driver.wait(until.elementsLocated(by.css('[class^="Grid_grid"]')), 20000);
+    let findList = await $$('[class^="Grid_grid"]');
     expect(findList).to.not.equal(null);
     await waitAWhile();
 
   });
 
   this.Given(/^I have a list of products in the search result$/, async function () {
-    let findResults = await $$('.Grid_grid__1YmC6');
+    let findResults = await $$('[class^="Grid_grid"]');
+
     let resultTexts = [];
     for (let findResult of findResults) {
       resultTexts.push(await findResult.getText());
@@ -37,7 +38,8 @@ module.exports = function () {
   });
 
   this.Given(/^that the list contains melon galia$/, async function () {
-    let findProducts = await $$('.Product_product-name__1IyPc');
+    let findProducts = await $$('[class^="Product_product-name"]');
+
     let result = [];
     for (let findProduct of findProducts) {
       result.push(await findProduct.getText());
@@ -54,6 +56,7 @@ module.exports = function () {
 
   this.Then(/^by clicking on Övrigt, I should be able to find out more information about given product$/, async function () {
     let productInformation = await $$('.Tabs_bottom__2tvqg');
+
     let productInfo = productInformation[1];
     await productInfo.click();
     await waitAWhile();
@@ -75,7 +78,7 @@ module.exports = function () {
 
   this.Then(/^the list of products sould be empty$/, async function () {
 
-    let productList = await $$('.Containerstyles__StyledContainer-sc-lx7e76-0 kOhKBa');
+    let productList = await $$('[class^="Containerstyles__StyledContainer"]');
 
     expect(productList).to.equal[0];
     await waitAWhile();
@@ -83,7 +86,7 @@ module.exports = function () {
 
   this.Then(/^I should get a message that says that the searched product does not exist$/, async function () {
 
-    let errorMessages = await $$('[class^="Text_text__1DvUt Text_body__FrvAc Text_black__yB42g"]');
+    let errorMessages = await $$('[class^="Text_text"]');
     let searchResult = [];
 
     for (let errorMessage of errorMessages) {
